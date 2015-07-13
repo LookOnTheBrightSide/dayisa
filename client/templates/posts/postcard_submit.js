@@ -13,7 +13,8 @@ Template.postcardSubmit.events({
                 return alert(error.reason);
 
             }
-            Router.go("postcardItem",{_id: result._id});
+            Router.go("postcardItem",{_id: result._id},
+                toastr["success"]("You have uploaded your postcard!", "Success!"));
         })
         // postcard._id = Postcards.insert(postcard);
         // Router.go('postcardPage', postcard);

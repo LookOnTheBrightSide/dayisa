@@ -10,13 +10,13 @@ Template.postcardEdit.events({
             description: $(e.target).find('[name=description]').val()
         }
         Postcards.update(currentPostcardId, {
-            $set: {postcardProperties: postcardProperties},
-            Command: toastr["success"]("You have updated your postcard!", "Success!")
+            $set: postcardProperties
         }, function(error) {
             if (error) {
-                alert(error.reason);
+                Command: toastr["error"](error.reason, "Error");
             } else {
                 Router.go('postcardItem', {
+                    Command: toastr["success"]("You have updated your postcard!", "Success!"),
                     _id: currentPostcardId
                 });
             }
@@ -27,6 +27,7 @@ Template.postcardEdit.events({
         if (confirm("Are you sure you to delete this postcard?")) {
             var currentPostcardId = this._id;
             Postcards.remove(currentPostcardId);
+            toastr["success"]("You have deleted your postcard!", "Success!");
             Router.go('postcardList');
         };
     }
@@ -34,25 +35,24 @@ Template.postcardEdit.events({
 
 
 
-Template.postcardEdit.onRendered(function () {
-      
+// Template.postcardEdit.onRendered(function () {
 
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": true,
-        "progressBar": false,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "2000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-});
 
+//     toastr.options = {
+//         "closeButton": false,
+//         "debug": false,
+//         "newestOnTop": true,
+//         "progressBar": false,
+//         "positionClass": "toast-top-right",
+//         "preventDuplicates": false,
+//         "onclick": null,
+//         "showDuration": "300",
+//         "hideDuration": "1000",
+//         "timeOut": "2000",
+//         "extendedTimeOut": "1000",
+//         "showEasing": "swing",
+//         "hideEasing": "linear",
+//         "showMethod": "fadeIn",
+//         "hideMethod": "fadeOut"
+//     }
+// });
