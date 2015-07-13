@@ -1,0 +1,14 @@
+<template name="postcard">
+		<div class="col-md-4 col-sm-6 col-sm-6 col-xs-12">
+		<div class="card description">
+			<img class="img-thumbnail img-responsive" src="{{imgUrl}}" alt="" />
+			<h4 class="card-title">{{title}}</h4>
+			<div class="card-content price-ring btn-raised">R{{price}}</div><!-- /.card-action -->
+			<p>
+				<a href="{{pathFor 'postcardItem'}}" class="btn btn-primary btn-xs">See Details</a>
+			</p>
+		</div>
+		<!-- /.description -->
+	</div>
+
+</template>

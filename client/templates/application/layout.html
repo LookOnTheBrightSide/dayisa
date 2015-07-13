@@ -1,0 +1,113 @@
+<!-- <template name="layout">
+<div class="container">
+	<header class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Dayisa App</a>
+		</div>
+	</header>
+	<div id="main">{{> yield}}</div>
+</div>
+</template>
+-->
+<template name="layout">
+
+<div id="wrapper">
+
+	<div class="overlay"></div>
+	<!--<div class="logins row">
+	<div class="container">
+		<button class="btn btn-default btn-raised col-md-3 col-md-offset-9" >{{> loginButtons align="right"}}</button>
+	</div>
+	/.container
+</div>
+-->
+{{#if currentUser}}
+<!-- Sidebar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+
+	<!-- END SIDEBAR USERPIC -->
+	<!-- SIDEBAR USER TITLE -->
+	<ul class="nav sidebar-nav">
+		<br />
+		<li class="profile-userpic">
+			<img src="http://placehold.it/450x450" class="img-responsive" alt=""></li>
+		<li class="profile-usertitle">
+			<div class="profile-usertitle-name">
+				{{#with currentUser}}
+				        {{username}}
+				{{/with}}
+			</div>
+			<div class="profile-usertitle-job">Developer</div>
+		</li>
+		<!-- END SIDEBAR USER TITLE -->
+		<!-- SIDEBAR BUTTONS -->
+		<div class="profile-userbuttons">
+			<button type="button" class="btn btn-success btn-sm">Watching</button>
+			<button type="button" class="btn btn-danger btn-sm">Message</button>
+		</div>
+		<!-- END SIDEBAR BUTTONS -->
+		<!-- SIDEBAR MENU -->
+		<div class="profile-usermenu">
+			<ul class="nav">
+				<li >
+					<a href="#"> <i class="glyphicon glyphicon-home"></i>
+						Overview
+					</a>
+				</li>
+				<li>
+					<a href="#"> <i class="glyphicon glyphicon-user"></i>
+						Profile Settings
+					</a>
+				</li>
+				<li>
+					<a href="#" >
+						<i class="glyphicon glyphicon-ok"></i>
+						My Posts
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="glyphicon glyphicon-flag"></i>
+						Messages
+					</a>
+				</li>
+			</ul>
+		</div>
+	</ul>
+</nav>
+{{/if}}
+<!-- /#sidebar-wrapper -->
+<!-- Page Content -->
+<div id="page-content-wrapper">
+	<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+		<span class="hamb-top"></span>
+		<span class="hamb-middle"></span>
+		<span class="hamb-bottom"></span>
+	</button>
+	<!-- <div class="collapse navbar-collapse" id="navigation">
+	<ul class="nav navbar-nav navbar-right">{{> loginButtons}}</ul>
+</div>
+-->
+<div class="container ">
+	<div class="row fixed-top">
+		<div class="col-md-4">
+			<h1 class="hidden-md hidden-sm hidden-xs"><a href="{{pathFor 'postcardList'}}" class="noDeco">Dayisa App</a></h1>
+		</div>
+		<div class="col-md-4">
+			{{#if currentUser}}<a href="{{pathFor 'postcardSubmit'}}" class="btn btn-default btn-raised">Submit Card</a>{{/if}}
+		</div>
+
+		<div class=" col-md-4 ">
+			<button class="btn btn-default btn-raised " >{{> loginButtons align="right"}}</button>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<!-- Card Projects -->{{> yield}}</div>
+</div>
+</div>
+<!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+</template>
