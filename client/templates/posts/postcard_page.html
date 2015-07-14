@@ -1,3 +1,12 @@
-<template name="postcardComments">
+<template name="postcardPage">
+	<div class="row">
+      <div class="col-md-10">
+
+        <h2 class="page-header">Comments</h2>
+        {{#each comments}}
+            {{> commentItem}}
+        {{/each}}
+      </div>
+    </div>
 
 </template>
